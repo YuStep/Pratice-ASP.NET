@@ -1,0 +1,50 @@
+﻿@{
+    Layout = null;
+}
+@model testir.Models.Person
+<style>
+    input[type=submit] {
+        padding: 10px;
+        border: 0;
+        box-shadow: 0 0 15px 4px rgba(0,0,0,0.06);
+        border-radius: 10px;
+    }
+    th {
+        background: #87CEEB; /* Цвет фона */
+        color: #fff; /* Цвет текста */
+        text-align: left; /* Выравнивание по левому краю */
+        box-shadow: 0 0 15px 4px rgba(0,0,0,0.06);
+        border-radius: 10px;
+    }
+
+    tr.odd {
+        background: #FFEFD5; /* Цвет фона */
+        border: 1px solid grey; /* Границы ячеек*/
+    }
+</style>
+<html>
+<body>
+    <h2>Удаление человека</h2>
+    <table>
+        <tr class="odd">
+            <th>Фамилия : </th>
+            <td>@Model.Surname</td>
+        </tr>
+        <tr class="odd">
+            <th>Имя : </th>
+            <td>@Model.Name</td>
+        </tr>
+        <tr class="odd">
+            <th>Отчество </th>
+            <td>@Model.Patronymic</td>
+        </tr>
+        <tr class="odd">
+            <th>Снилс : </th>
+            <td>@Model.Snils</td>
+        </tr>
+    </table>
+    <form method="post">
+        <input type="submit" value="Удалить" style="background-color:crimson" />
+    </form>
+</body>
+</html>

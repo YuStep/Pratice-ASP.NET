@@ -1,0 +1,64 @@
+﻿@model testir.Models.Person
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Проверка</title>
+    <style>
+        table.jewel {
+            width: 20%; /* Ширина таблицы */
+            border: 1px solid #666; /* Рамка вокруг таблицы */
+        }
+
+        th {
+            background: #009383; /* Цвет фона */
+            color: #fff; /* Цвет текста */
+            text-align: left; /* Выравнивание по левому краю */
+        }
+
+        tr.odd {
+            background: #ebd3d7; /* Цвет фона */
+        }
+    </style>
+</head>
+<body>
+    <table class="jewel">
+        <tr class="odd">
+            <th>Имя : </th>
+            <td>@Model.Name</td>
+        </tr>
+        <tr class="odd">
+            <th>Фамилия : </th>
+            <td>@Model.Surname</td>
+        </tr>
+        <tr class="odd">
+            <th>Снилс : </th>
+            <td>@Model.Snils</td>
+        </tr>
+        <tr class="odd">
+            <th>Период </th>
+            <th>Сумма</th>
+        </tr>
+        <tr>
+            @if (Model.PFRStorages.Count() == 0)
+            {
+                <td>Нет данных</td>
+                <td>Нет данных</td>
+            }
+            @foreach (var el in Model.PFRStorages)
+            {
+            <tr>
+                <td>@el.Period</td>
+                <td>@el.Suma</td>
+            </tr>
+            }
+         </tr>
+        </table>
+
+</body>
+</html>

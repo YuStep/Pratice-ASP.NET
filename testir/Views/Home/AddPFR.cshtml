@@ -1,0 +1,61 @@
+﻿@model Person 
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Добавление данных</title>
+    <style>
+        <style >
+        table.jewel {
+            border: 1px solid #666; /* Рамка вокруг таблицы */
+        }
+
+        th {
+            background: #87CEEB; /* Цвет фона */
+            color: #fff; /* Цвет текста */
+            text-align: left; /* Выравнивание по левому краю */
+            border: 1px solid grey; /* Границы ячеек*/
+        }
+
+        tr.odd {
+            background: #FFEFD5; /* Цвет фона */
+            border: 1px solid grey; /* Границы ячеек*/
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h3>Форма добавления данных</h3>
+        <p>Для добавления данных заполните следующие поля:</p>
+        <form method="post">
+            <input type="hidden" value="@Model.Id" name="PersonId" />
+            <table class="jewel">
+                <tr class="odd">
+                    <th>Имя: </th>
+                    <td>@Model.Name</td>
+                </tr>
+                <tr class="odd">
+                    <th>Фамилия: </th>
+                    <td>@Model.Surname</td>
+                </tr>
+                <tr class="odd">
+                    <th>Снилс: </th>
+                    <td>@Model.Snils</td>
+                </tr>
+                <tr>
+                    <th>Период:  </th>
+                    <td><input type="text" name="Period" maxlength="10" /></td>
+                </tr>
+                <tr class="odd">
+                    <th>Сумма: </th>
+                    <td><input type="text" name="Suma" maxlength="20" /></td>
+                </tr>
+                <tr><td><input type="submit" value="Отправить" /> </td><td><input type="reset" value="Очистить" style="background-color:red;" /></td></tr>
+            </table>
+        </form>
+    </div>
+</body>
+</html>

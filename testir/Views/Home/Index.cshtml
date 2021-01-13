@@ -1,0 +1,125 @@
+﻿@model IEnumerable<testir.Models.Person>
+@{
+
+    Layout = null;
+    string info = null;
+    if (Model.Count()==0) {
+        info = "Нет таких людей";
+    }
+}
+
+<html>
+<head>
+    <title>Список людей</title>
+    <style>
+        table.jewel {
+            
+            border: 1px solid #666; /* Рамка вокруг таблицы */
+        }
+ 
+        th {
+            background: #87CEEB; /* Цвет фона */
+            color: #fff; /* Цвет текста */
+            text-align: left; /* Выравнивание по левому краю */
+            border: 1px solid grey; /* Границы ячеек*/
+        }
+
+        td {
+            background: #e8edff;
+            border-bottom: 1px solid white;
+            color: #669;
+            border-top: 1px solid transparent;
+            padding: 8px;
+        }
+
+        tr:hover td {
+            background: #87CEEB;
+        }
+
+        tr.odd {
+            background: #FFEFD5; /* Цвет фона */
+            border: 1px solid grey; /* Границы ячеек*/
+        }
+
+        input[type=text] {
+            padding: 10px;
+            border: 0;
+            box-shadow: 0 0 15px 4px rgba(0,0,0,0.06);
+            border-radius: 10px;
+            background-color: lightgrey;
+        }
+        input[type=submit] {
+            padding: 10px;
+            border: 0;
+            box-shadow: 0 0 15px 4px rgba(0,0,0,0.06);
+            border-radius: 10px;
+            background-color:chocolate;
+        }
+        a.button24 {
+            display: inline-block;
+            color: white;
+            text-decoration: none;
+            padding: .5em 2em;
+            outline: none;
+            border-width: 2px 0;
+            border-style: solid none;
+            border-color: #FDBE33 #000 #D77206;
+            border-radius: 4px;
+            background: linear-gradient(#F3AE0F, #E38916) #E38916;
+            transition: 0.2s;
+        }
+
+        a.button24:hover {
+            background: linear-gradient(#f5ae00, #f59500) #f5ae00;
+        }
+
+        a.button24:active {
+            background: linear-gradient(#f59500, #f5ae00) #f59500;
+        }
+    </style>
+</head>
+<body>
+    <h3>Люди</h3>
+
+    <form method="get">
+        <div class="form-inline form-group">
+            <label class="control-label">Имя: </label>
+            <input name="name" class="form-control" input type = "text"/>
+            <label class="control-label">Фамилия: </label>
+            <input name="surname" class="form-control" input type = "text"/>
+            <input type="submit" value="Фильтр" class="button24" />
+        </div>
+    </form>
+    @if (Model.Count()==0)
+    {
+        <p>@info</p>
+    }
+    <table class="jewel">
+        <tr class="odd">
+            <th>Фамилия</th>
+            <th>Имя</th>
+            <th>Отчество</th>
+            <th>Дата рождения</th>
+            <th>Снилс</th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+        @foreach (var person in Model)
+        {
+            <tr class="odd">
+                <td>@person.Surname</td>
+                <td>@person.Name</td>
+                <td>@person.Patronymic</td>
+                <td>@person.BirthDate.ToShortDateString()</td>
+                <td>@person.Snils</td>
+                <td><a href="~/Home/Delete/@person.Id" class="button24">Удалить</a></td>
+                <td><a href="~/Home/Check/@person.Id" class="button24">Проверить</a></td>
+                <td><a href="~/Home/AddPFR/@person.Id" class="button24">Добавить данные</a></td>
+            </tr>
+        }
+    </table>
+    <p></p>
+    <a href="~/Home/Add/" class="button24" target="_self">Добавить человека</a>
+</body>
+</html>
